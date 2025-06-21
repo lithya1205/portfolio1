@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lithya Sri | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f3e7d3, #e6cfa4);
+      color: #3a2e2e;
+      min-height: 100vh;
+      transition: background 0.5s, color 0.5s;
+    }
+    body.dark-mode {
+      background: linear-gradient(135deg, #3b2f2f, #1e130c);
+      color: #fdf5e6;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #deb887;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.4rem;
+      z-index: 1000;
+      color: #000;
+      transition: transform 0.6s ease-in-out;
+    }
+    .rotate {
+      transform: rotate(360deg);
+    }
+    nav {
+      background: #5e4739;
+      padding: 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav a {
+      color: #fff3e6;
+      margin: 0 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+    }
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #5e4739;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    #modalImage {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    #modalImage img {
+      max-width: 80%;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #6a4c3c;
+    }
+    section {
+      padding: 2rem;
+    }
+    .skills-section {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: auto;
+      animation: rotateSkills 12s linear infinite;
+    }
+    @keyframes rotateSkills {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .skill-box {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #fff3e6;
+      color: #5e4739;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+    .skill-box:hover {
+      transform: scale(1.5);
+      z-index: 10;
+    }
+    .project-card {
+      margin: 1rem auto;
+      max-width: 300px;
+      padding: 1rem;
+      border: 2px solid #5e4739;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <header id="home">
+    <img src="image3.jpg" onclick="showModal()">
+    <h1>Hi, I'm Lithya Sri</h1>
+  </header>
+  <div id="modalImage" onclick="hideModal()">
+    <img src="image3.jpg">
+  </div>
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align: center; max-width: 600px; margin: auto;">I'm Lithya Sri, a passionate web developer skilled in creating visually engaging and interactive web experiences. I focus on HTML, CSS, JavaScript, and more to build elegant and responsive designs.</p>
+  </section>
+  <section id="skills">
+    <h2>Skills</h2><br><br>
+    <div class="skills-section" id="flowerSkills"></div>
+  </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Flower Flex</h3>
+      <img src="Screenshot 2025-06-20 095147.png" alt="Flower Flex Project" onclick="showProjectModal('Screenshot 2025-06-20 095147.png')">
+    </div>
+    <div class="project-card">
+      <h3>Car Animation</h3>
+      <img src="Screenshot 2025-06-20 095249.png" alt="Car Animation" onclick="window.open('https://lithya1205.github.io/Animation/', '_blank')">
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div style="display: flex; justify-content: center; gap: 1.5rem;">
+      <a href="https://instagram.com" target="_blank" style="background: #fff; padding: 1rem; border-radius: 12px;"><i class="fab fa-instagram"></i></a>
+      <a href="https://linkedin.com" target="_blank" style="background: #fff; padding: 1rem; border-radius: 12px;"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:you@example.com" style="background: #fff; padding: 1rem; border-radius: 12px;"><i class="fas fa-envelope"></i></a>
+    </div>
+  </section>
+  <div id="projectModal" style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index:1002; justify-content:center; align-items:center;">
+    <img id="projectImage" src="" style="max-width: 80%; border-radius: 12px;" />
+  </div>
+  <script>
+    const skills = [
+      { icon: 'fa-html5', name: 'HTML' },
+      { icon: 'fa-css3-alt', name: 'CSS' },
+      { icon: 'fa-js', name: 'JavaScript' },
+      { icon: 'fa-python', name: 'Python' },
+      { icon: 'fa-code', name: 'C' },
+      { icon: 'fa-code', name: 'C++' },
+      { icon: 'fa-file-excel', name: 'Excel' },
+      { icon: 'fa-github', name: 'GitHub' }
+    ];
+    const radius = 120;
+    const centerX = 100;
+    const centerY = 100;
+    window.onload = () => {
+      const flower = document.getElementById('flowerSkills');
+      skills.forEach((skill, index) => {
+        const angle = (2 * Math.PI / skills.length) * index;
+        const x = radius * Math.cos(angle) + centerX;
+        const y = radius * Math.sin(angle) + centerY;
+        const box = document.createElement('div');
+        box.className = 'skill-box';
+        box.style.left = `${x}px`;
+        box.style.top = `${y}px`;
+        box.innerHTML = `<i class="fa-brands ${skill.icon}"></i><span>${skill.name}</span>`;
+        flower.appendChild(box);
+      });
+    };
+    function showModal() {
+      document.getElementById('modalImage').style.display = 'flex';
+    }
+    function hideModal() {
+      document.getElementById('modalImage').style.display = 'none';
+    }
+    function showProjectModal(src) {
+      const modal = document.getElementById('projectModal');
+      const img = document.getElementById('projectImage');
+      img.src = src;
+      modal.style.display = 'flex';
+    }
+    document.getElementById('projectModal').onclick = function() {
+      this.style.display = 'none';
+    };
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.querySelector('.theme-toggle i');
+      icon.classList.toggle('fa-sun');
+      icon.classList.toggle('fa-moon');
+      document.querySelector('.theme-toggle').classList.add('rotate');
+      setTimeout(() => {
+        document.querySelector('.theme-toggle').classList.remove('rotate');
+      }, 600);
+    }
+  </script>
+</body>
+</html>
